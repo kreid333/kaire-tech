@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaire Tech</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <!-- navigation -->
+    <header class="container">
+      <nav class="nav">
+        <ul>
+          <li class="nav-item">Home</li>
+          <li class="nav-item">About</li>
+          <li class="nav-item">Projects</li>
+          <li class="nav-item">Technologies</li>
+          <li class="nav-item">Contact</li>
+        </ul>
+        <!-- hamburger menu -->
+        <div class="hamburger__menu">
+          <div class="hamburger__menu-line"></div>
+          <div class="hamburger__menu-line"></div>
+          <div class="hamburger__menu-line"></div>
+        </div>
+
+        <!-- hamburger menu content -->
+        <div class="hamburger__menu-content">
+          <ul>
+            <li class="nav-item">Home</li>
+            <li class="nav-item">About</li>
+            <li class="nav-item">Projects</li>
+            <li class="nav-item">Technologies</li>
+            <li class="nav-item">Contact</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- homepage -->
+    <script>
+      const burger = document.querySelector(".hamburger__menu");
+      const burgerContent = document.querySelector(".hamburger__menu-content");
+      const burgerContentItems = document.querySelector(
+        ".hamburger__menu-content ul"
+      );
+
+      window.addEventListener("resize", function () {
+        if (window.matchMedia("(min-width: 769px)").matches) {
+          burgerContent.style.display = "none";
+          burgerContentItems.style.display = "none";
+        }
+      });
+
+      burger.addEventListener("click", () => {
+        if (
+          burgerContent.style.display == "" ||
+          burgerContent.style.display == "none"
+        ) {
+          burgerContent.style.display = "flex";
+          burgerContentItems.style.display = "flex";
+        } else if (burgerContent.style.display == "flex") {
+          burgerContent.style.display = "none";
+          burgerContentItems.style.display = "none";
+        }
+      });
+
+      burgerContent.addEventListener("click", () => {
+        if (
+          burgerContent.style.display == "" ||
+          burgerContent.style.display == "none"
+        ) {
+          burgerContent.style.display = "flex";
+          burgerContentItems.style.display = "flex";
+        } else if (burgerContent.style.display == "flex") {
+          burgerContent.style.display = "none";
+          burgerContentItems.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
