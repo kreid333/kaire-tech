@@ -40,12 +40,14 @@
     </header>
 
     <!-- homepage -->
+    <script src="./node_modules/gsap/dist/gsap.min.js"></script>
     <script>
       const burger = document.querySelector(".hamburger__menu");
       const burgerContent = document.querySelector(".hamburger__menu-content");
       const burgerContentItems = document.querySelector(
         ".hamburger__menu-content ul"
       );
+      let tween;
 
       window.addEventListener("resize", function () {
         if (window.matchMedia("(min-width: 769px)").matches) {
@@ -61,24 +63,38 @@
         ) {
           burgerContent.style.display = "flex";
           burgerContentItems.style.display = "flex";
+          tween = gsap.fromTo(
+            ".hamburger__menu-content",
+            {
+              opacity: 0,
+            },
+            {
+              opacity: 1,
+              duration: 0.5
+            }
+          );
         } else if (burgerContent.style.display == "flex") {
-          burgerContent.style.display = "none";
-          burgerContentItems.style.display = "none";
+          async function animation() {
+            await tween.reverse();
+            burgerContent.style.display = "none";
+            burgerContentItems.style.display = "none";
+          }
+          animation();
         }
       });
 
-      burgerContent.addEventListener("click", () => {
-        if (
-          burgerContent.style.display == "" ||
-          burgerContent.style.display == "none"
-        ) {
-          burgerContent.style.display = "flex";
-          burgerContentItems.style.display = "flex";
-        } else if (burgerContent.style.display == "flex") {
-          burgerContent.style.display = "none";
-          burgerContentItems.style.display = "none";
-        }
-      });
+      //   burgerContent.addEventListener("click", () => {
+      //     if (
+      //       burgerContent.style.display == "" ||
+      //       burgerContent.style.display == "none"
+      //     ) {
+      //       burgerContent.style.display = "flex";
+      //       burgerContentItems.style.display = "flex";
+      //     } else if (burgerContent.style.display == "flex") {
+      //       burgerContent.style.display = "none";
+      //       burgerContentItems.style.display = "none";
+      //     }
+      //   });
     </script>
   </body>
 </html>
